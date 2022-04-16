@@ -7,11 +7,14 @@
 \usepackage{hyperref}
 \hypersetup{pdftitle={Методология проектирования структур данных. Индивидуальное задание. Разработка модели данных зоологической коллекции}, pdfauthor={Верхотуров В.С.}, colorlinks=false, pdfborder={0 0 0}}
 
-\usepackage{authblk} % affilations on the titlepage
+\usepackage{authblk} % Принадлежность на титульнике
 
-\usepackage{graphicx}
+\usepackage{graphicx} % Возможность вставить картинку
 
 \usepackage{float} % Вставить картинку в определенное место
+
+\usepackage{array} % Многострочная ячейка таблицы
+\usepackage{longtable} % Таблица на нескольких страницах
 
 \usepackage{xcolor}
 
@@ -81,17 +84,12 @@
 
 \begin{figure}[H]
     \centering
-    \includegraphics[height=9cm]{image.png}
+    \includegraphics[width=.9\columnwidth]{image.png}
     \caption{Диаграмма модели данных зоологической коллекции}
     \label{fig:er_diagram}
 \end{figure}
 
-\subsection{Спецификация модели предметной области}
-
-{
-    \color{red}
-    \textbf{TODO}
-}
+\subsection{Спецификация модели предметной области \textcolor{red}{TODO}}
 
 
 
@@ -99,17 +97,11 @@
 
 
 
-\subsection{Нормализация схем сущностей}
+\subsection{Нормализация схем сущностей \textcolor{red}{TODO}}
 
-Отношения находятся в 1 НФ, т.к. кажый его элемент имеет атомарное строение.
 
-Отношения находятся во 2 НФ, т.к. они заданы в 1 НФ и каждый атрибут, не являющийся первичным атрибутом в каждом отношении, функционально полно зависит от первичного ключа этого отношения.
-
-Отношения находятся в 3 НФ, т.к. они заданы во 2 НФ и каждый атрибут  из каждого отношения, не являющийся первичным, нетранзитивно зависит от каждого возможного ключа. 
 
 \section{Реляционная модель данных}
-
-
 
 
 \subsection{Получение реляционных отношений из модели предметной области}
@@ -224,10 +216,10 @@
     \newcommand\obekiHraneniaFK{Номер госрегистрации, Код зоологической номенклатуры}
 
     %%% Зоологическая номенклатура
-    \newcommand\zoologicheskayaNpmenklatura{Зоологическая номенклатура (\pk{Код зоологической номенклатуры}, Наименование таксона)}
+    \newcommand\zoologicheskayaNomenklatura{Зоологическая номенклатура (\pk{Код зоологической номенклатуры}, Наименование таксона)}
     
-    \newcommand\zoologicheskayaNpmenklaturaPK{Код зоологической номенклатуры}
-    \newcommand\zoologicheskayaNpmenklaturaFK{}
+    \newcommand\zoologicheskayaNomenklaturaPK{Код зоологической номенклатуры}
+    \newcommand\zoologicheskayaNomenklaturaFK{}
     
     %%% Происхождение коллекции
     \newcommand\proishozhdeniyeKollektsii{Происхождение коллекции (\pfk{Номер госрегистрации}, \pk{Номер документа}, \fk{Код вида документа}, Серия, Номер)}
@@ -260,10 +252,10 @@
     \newcommand\izmeneniaVSostaveKollektsiiFK{Код госрегистрации, Код причины изменения}
     
     %%% Классификатор причин изменения в составе коллекции
-    \newcommand\krPrichinIzmeneniaVSostaveKollektsii{Классификатор причин изменения в составе коллекции (\pk{Код причины именения}, Наименование причины изменения)}
+    \newcommand\krPrichinIzmeneniaVSostaveKollektsii{Классификатор причин изменения в составе коллекции (\pk{Код причины изменения}, Наименование причины изменения)}
     
-    \newcommand\izmeneniaVSostaveKollektsiiPK{Код причины именения}
-    \newcommand\izmeneniaVSostaveKollektsiiFK{}
+    \newcommand\krPrichinIzmeneniaVSostaveKollektsiiPK{Код причины изменения}
+    \newcommand\krPrichinIzmeneniaVSostaveKollektsiiFK{}
     
     %%% Условия хранения коллекции
     \newcommand\usoviaHraneniaKollektsii{Условия хранения коллекции (\pfk{Номер госрегистрации}, \pk{Номер условия}, \fk{Код условия хранения})}
@@ -277,17 +269,11 @@
     \newcommand\krUsloviyHraneniaPK{Код условия хранения}
     \newcommand\krUsloviyHraneniaFK{}
     
-    %%% Классификатор Экспертной группы по зоологическим коллекциям
-    \newcommand\krEkspertnoiGruppiPoZoologicheskimKolleksiyam{Классификатор Экспертной группы по зоологическим коллекциям (\pk{Код заключения}, Наименование заключения)}
+    %%% Классификатор заключений Экспертной группы по зоологическим коллекциям
+    \newcommand\krZaklucheniyEkspertnoiGruppiPoZoologicheskimKolleksiyam{Классификатор заключений Экспертной группы по зоологическим коллекциям (\pk{Код заключения}, Наименование заключения)}
     
-    \newcommand\krEkspertnoiGruppiPoZoologicheskimKolleksiyamPK{Код заключения}
-    \newcommand\krEkspertnoiGruppiPoZoologicheskimKolleksiyamFK{}
-    
-    %%% Классификатор ОКПРТР
-    \newcommand\krOKPRTR{Классификатор ОКПРТР (\pk{Код ОКПРТР}, Наименование ОКПРТР)}
-    
-    \newcommand\krOKPRTRPK{Код ОКПРТР}
-    \newcommand\krOKPRTRFK{}
+    \newcommand\krZaklucheniyEkspertnoiGruppiPoZoologicheskimKolleksiyamPK{Код заключения}
+    \newcommand\krZaklucheniyEkspertnoiGruppiPoZoologicheskimKolleksiyamFK{}
     
     %%% Классификатор ОКПРТР
     \newcommand\krOKPRTR{Классификатор ОКПРТР (\pk{Код ОКПРТР}, Наименование ОКПРТР)}
@@ -314,20 +300,149 @@
     \newcommand\osbiyeUsloviaVvozaIVivozaFK{Номер разрешения ввоза или вывоза, Номер госрегистрации, Код особого условия ввоза или вывоза}
     
     %%% Классификатор особых условий ввоза и вывоза
-    \newcommand\krTseleyVvozaIVivoza{Классификатор особых условий ввоза и вывоза (\pk{Код особого условия}, Наименование осбого условия ввоза или вывоза)}
+    \newcommand\krOsobihUsloviyVvozaIVivoza{Классификатор особых условий ввоза и вывоза (\pk{Код особого условия}, Наименование особого условия ввоза или вывоза)}
     
-    \newcommand\krTseleyVvozaIVivozaPK{Код особого условия}
-    \newcommand\krTseleyVvozaIVivozaFK{}
+    \newcommand\krOsobihUsloviyVvozaIVivozaPK{Код особого условия}
+    \newcommand\krOsobihUsloviyVvozaIVivozaFK{}
     
     
     \subsubsection{Таблица перехода}
     
-    
-    
-    
+    \begin{center}
+        \small
+        \begin{longtable}{ | m{.2\columnwidth} | m{.01\columnwidth}| m{.7\columnwidth} | }
+            \hline
+            \firstColumn{Зоологическая коллекция}{Определяет}{Классификатор ФИАС}{\ruleManyMondatoryOneOptional} & \ruleManyMondatoryOneOptionalNum & \thirdColumn{\zoologicheskayaKollektsiya}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{\krFIAS}{\krFIASPK}{\krFIASFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Определяет}{Классификатор назначения коллекции}{\ruleManyMondatoryOneOptional} & \ruleManyMondatoryOneOptionalNum & \thirdColumn{\zoologicheskayaKollektsiya}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{\krNaznacheniyaKollektsii}{\krNaznacheniyaKollektsiiPK}{\krNaznacheniyaKollektsiiFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Определяет}{Классификатор форм собственности}{\ruleManyMondatoryOneOptional} & \ruleManyMondatoryOneOptionalNum & \thirdColumn{\zoologicheskayaKollektsiya}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{\krFormSobstvennosti}{\krFormSobstvennostiPK}{\krFormSobstvennostiFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Имеет}{Объекты хранения}{\ruleOneMondatoryManyMondatory} & \ruleOneMondatoryManyMondatoryNum & \thirdColumn{\zoologicheskayaKollektsiya}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{\obekiHranenia}{\obekiHraneniaPK}{\obekiHraneniaFK} \\ 
+            
+            \hline
+            \firstColumn{Объекты хранения}{Определяет}{Зоологическая номенклатура}{\ruleManyMondatoryOneOptional} & \ruleManyMondatoryOneOptionalNum & \thirdColumn{\obekiHranenia}{\obekiHraneniaPK}{\obekiHraneniaFK}{\zoologicheskayaNomenklatura}{\zoologicheskayaNomenklaturaPK}{\zoologicheskayaNomenklaturaFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Имеет}{Происхождение коллекции}{\ruleOneMondatoryManyMondatory} & \ruleOneMondatoryManyMondatoryNum & \thirdColumn{\zoologicheskayaKollektsiya}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{\proishozhdeniyeKollektsii}{\proishozhdeniyeKollektsiiPK}{\proishozhdeniyeKollektsiiFK} \\ 
+            
+            \hline
+            \firstColumn{Происхождение коллекции}{Определяет}{Классификатор вида документов}{\ruleManyMondatoryOneOptional} & \ruleManyMondatoryOneOptionalNum & \thirdColumn{\proishozhdeniyeKollektsii}{\proishozhdeniyeKollektsiiPK}{\proishozhdeniyeKollektsiiFK}{\krVidaDokumentov}{\krVidaDokumentovPK}{\krVidaDokumentovFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Имеет}{Описание коллекции}{\ruleOneMondatoryManyMondatory} & \ruleOneMondatoryManyMondatoryNum & \thirdColumn{\zoologicheskayaKollektsiya}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{\opisaniyeKollektsii}{\opisaniyeKollektsiiPK}{\opisaniyeKollektsiiFK} \\ 
+            
+            \hline
+            \firstColumn{Описание коллекции}{Определяет}{Классификатор коллекций}{\ruleManyMondatoryOneOptional} & \ruleManyMondatoryOneOptionalNum & \thirdColumn{\opisaniyeKollektsii}{\opisaniyeKollektsiiPK}{\opisaniyeKollektsiiFK}{\krKollektsiy}{\krKollektsiyPK}{\krKollektsiyFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Имеет}{Изменения в составе коллекции}{\ruleOneMondatoryManyMondatory} & \ruleOneMondatoryManyMondatoryNum & \thirdColumn{\zoologicheskayaKollektsiya}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{\izmeneniaVSostaveKollektsii}{\izmeneniaVSostaveKollektsiiPK}{\izmeneniaVSostaveKollektsiiFK} \\ 
+            
+            \hline
+            \firstColumn{Изменения в составе коллекции}{Определяет}{Классификатор причин изменения в составе коллекции}{\ruleManyMondatoryOneOptional} & \ruleManyMondatoryOneOptionalNum & \thirdColumn{\izmeneniaVSostaveKollektsii}{\izmeneniaVSostaveKollektsiiPK}{\izmeneniaVSostaveKollektsiiFK}{\krPrichinIzmeneniaVSostaveKollektsii}{\krPrichinIzmeneniaVSostaveKollektsiiPK}{\krPrichinIzmeneniaVSostaveKollektsiiFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Имеет}{Условия хранения коллекции}{\ruleOneMondatoryManyMondatory} & \ruleOneMondatoryManyMondatoryNum & \thirdColumn{\zoologicheskayaKollektsiya}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{\usoviaHraneniaKollektsii}{\usoviaHraneniaKollektsiiPK}{\usoviaHraneniaKollektsiiFK} \\ 
+            
+            \hline
+            \firstColumn{Условия хранения коллекции}{Определяет}{Классификатор условий хранения}{\ruleManyMondatoryOneOptional} & \ruleManyMondatoryOneOptionalNum & \thirdColumn{\usoviaHraneniaKollektsii}{\usoviaHraneniaKollektsiiPK}{\usoviaHraneniaKollektsiiFK}{\krUsloviyHranenia}{\krUsloviyHraneniaPK}{\krUsloviyHraneniaFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Определяет}{Классификатор заключений Экспертной группы по зоологическим коллекциям}{\ruleManyMondatoryOneOptional} & \ruleManyMondatoryOneOptionalNum & \thirdColumn{\zoologicheskayaKollektsiya}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{\krZaklucheniyEkspertnoiGruppiPoZoologicheskimKolleksiyam}{\krZaklucheniyEkspertnoiGruppiPoZoologicheskimKolleksiyamPK}{\krZaklucheniyEkspertnoiGruppiPoZoologicheskimKolleksiyamFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Определяет}{Классификатор ОКПРТР}{\ruleManyMondatoryOneOptional} & \ruleManyMondatoryOneOptionalNum & \thirdColumn{\zoologicheskayaKollektsiya}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{\krOKPRTR}{\krOKPRTRPK}{\krOKPRTRFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Имеет}{Разрешение на вывоз и ввоз}{\ruleOneOptionalManyMondatory} & \ruleOneOptionalManyMondatoryNum & \thirdColumn{\zoologicheskayaKollektsiya}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{\razresheniyeNaVivozIVvoz}{\razresheniyeNaVivozIVvozPK}{\razresheniyeNaVivozIVvozFK} \\ 
+            
+            \hline
+            \firstColumn{Разрешение на вывоз и ввоз}{Определяет}{Классификатор целей ввоза и вывоза}{\ruleManyMondatoryOneOptional} & \ruleManyMondatoryOneOptionalNum & \thirdColumn{\razresheniyeNaVivozIVvoz}{\razresheniyeNaVivozIVvozPK}{\razresheniyeNaVivozIVvozFK}{\krTseleyVvozaIVivoza}{\krTseleyVvozaIVivozaPK}{\krTseleyVvozaIVivozaFK} \\ 
+            
+            \hline
+            \firstColumn{Разрешение на вывоз и ввоз}{Имеет}{Особые условия ввоза и вывоза}{\ruleOneOptionalManyMondatory} & \ruleOneOptionalManyMondatoryNum & \thirdColumn{\razresheniyeNaVivozIVvoz}{\razresheniyeNaVivozIVvozPK}{\razresheniyeNaVivozIVvozFK}{\osbiyeUsloviaVvozaIVivoza}{\osbiyeUsloviaVvozaIVivozaPK}{\osbiyeUsloviaVvozaIVivozaFK} \\ 
+            
+            \hline
+            \firstColumn{Особые условия ввоза и вывоза}{Определяет}{Классификатор особых условий ввоза и вывоза}{\ruleManyMondatoryOneOptional} & \ruleManyMondatoryOneOptionalNum & \thirdColumn{\osbiyeUsloviaVvozaIVivoza}{\osbiyeUsloviaVvozaIVivozaPK}{\krOsobihUsloviyVvozaIVivozaFK}{\krOsobihUsloviyVvozaIVivoza}{\krOsobihUsloviyVvozaIVivozaPK}{\krOsobihUsloviyVvozaIVivozaFK} \\ 
+            
+            %\hline
+            %\firstColumn{}{}{}{\rule} & \ruleNum & \thirdColumn{}{}{}{}{}{} \\ 
+            
+            \hline
+        \end{longtable}
+    \end{center}
     
     
     \subsubsection{Итоговые реляционные отношения}
+    
+    \begin{center}
+        \begin{longtable}{ | m{.2\columnwidth} | m{.7\columnwidth} | }
+            \hline
+            \firstColumn{Зоологическая коллекция}{Определяет}{Классификатор ФИАС}{\ruleManyMondatoryOneOptional} & \generalizedColumn{Зоологическая коллекция}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{Классификатор ФИАС}{\krFIASPK}{\krFIASFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Определяет}{Классификатор назначения коллекции}{\ruleManyMondatoryOneOptional} & \generalizedColumn{Зоологическая коллекция}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{Классификатор назначения коллекции}{\krNaznacheniyaKollektsiiPK}{\krNaznacheniyaKollektsiiFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Определяет}{Классификатор форм собственности}{\ruleManyMondatoryOneOptional} & \generalizedColumn{Зоологическая коллекция}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{Классификатор форм собственности}{\krFormSobstvennostiPK}{\krFormSobstvennostiFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Имеет}{Объекты хранения}{\ruleOneMondatoryManyMondatory} & \generalizedColumn{Зоологическая коллекция}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{Объекты хранения}{\obekiHraneniaPK}{\obekiHraneniaFK} \\ 
+            
+            \hline
+            \firstColumn{Объекты хранения}{Определяет}{Зоологическая номенклатура}{\ruleManyMondatoryOneOptional} & \generalizedColumn{Объекты хранения}{\obekiHraneniaPK}{\obekiHraneniaFK}{Зоологическая номенклатура}{\zoologicheskayaNomenklaturaPK}{\zoologicheskayaNomenklaturaFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Имеет}{Происхождение коллекции}{\ruleOneMondatoryManyMondatory} & \generalizedColumn{Зоологическая коллекция}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{Происхождение коллекции}{\proishozhdeniyeKollektsiiPK}{\proishozhdeniyeKollektsiiFK} \\ 
+            
+            \hline
+            \firstColumn{Происхождение коллекции}{Определяет}{Классификатор вида документов}{\ruleManyMondatoryOneOptional} & \generalizedColumn{Происхождение коллекции}{\proishozhdeniyeKollektsiiPK}{\proishozhdeniyeKollektsiiFK}{Классификатор вида документов}{\krVidaDokumentovPK}{\krVidaDokumentovFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Имеет}{Описание коллекции}{\ruleOneMondatoryManyMondatory} & \generalizedColumn{Зоологическая коллекция}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{Описание коллекции}{\opisaniyeKollektsiiPK}{\opisaniyeKollektsiiFK} \\ 
+            
+            \hline
+            \firstColumn{Описание коллекции}{Определяет}{Классификатор коллекций}{\ruleManyMondatoryOneOptional} & \generalizedColumn{Описание коллекции}{\opisaniyeKollektsiiPK}{\opisaniyeKollektsiiFK}{Классификатор коллекций}{\krKollektsiyPK}{\krKollektsiyFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Имеет}{Изменения в составе коллекции}{\ruleOneMondatoryManyMondatory} & \generalizedColumn{Зоологическая коллекция}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{Изменения в составе коллекции}{\izmeneniaVSostaveKollektsiiPK}{\izmeneniaVSostaveKollektsiiFK} \\ 
+            
+            \hline
+            \firstColumn{Изменения в составе коллекции}{Определяет}{Классификатор причин изменения в составе коллекции}{\ruleManyMondatoryOneOptional} & \generalizedColumn{Изменения в составе коллекции}{\izmeneniaVSostaveKollektsiiPK}{\izmeneniaVSostaveKollektsiiFK}{Классификатор причин изменения в составе коллекции}{\krPrichinIzmeneniaVSostaveKollektsiiPK}{\krPrichinIzmeneniaVSostaveKollektsiiFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Имеет}{Условия хранения коллекции}{\ruleOneMondatoryManyMondatory} & \generalizedColumn{Зоологическая коллекция}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{Условия хранения коллекции}{\usoviaHraneniaKollektsiiPK}{\usoviaHraneniaKollektsiiFK} \\ 
+            
+            \hline
+            \firstColumn{Условия хранения коллекции}{Определяет}{Классификатор условий хранения}{\ruleManyMondatoryOneOptional} & \generalizedColumn{Условия хранения коллекции}{\usoviaHraneniaKollektsiiPK}{\usoviaHraneniaKollektsiiFK}{Классификатор условий хранения}{\krUsloviyHraneniaPK}{\krUsloviyHraneniaFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Определяет}{Классификатор заключений Экспертной группы по зоологическим коллекциям}{\ruleManyMondatoryOneOptional} & \generalizedColumn{Зоологическая коллекция}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{Классификатор заключений Экспертной группы по зоологическим коллекциям}{\krZaklucheniyEkspertnoiGruppiPoZoologicheskimKolleksiyamPK}{\krZaklucheniyEkspertnoiGruppiPoZoologicheskimKolleksiyamFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Определяет}{Классификатор ОКПРТР}{\ruleManyMondatoryOneOptional} & \generalizedColumn{Зоологическая коллекция}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{Классификатор ОКПРТР}{\krOKPRTRPK}{\krOKPRTRFK} \\ 
+            
+            \hline
+            \firstColumn{Зоологическая коллекция}{Имеет}{Разрешение на вывоз и ввоз}{\ruleOneOptionalManyMondatory} & \generalizedColumn{Зоологическая коллекция}{\zoologicheskayaKollektsiyaPK}{\zoologicheskayaKollektsiyaFK}{Разрешение на вывоз и ввоз}{\razresheniyeNaVivozIVvozPK}{\razresheniyeNaVivozIVvozFK} \\ 
+            
+            \hline
+            \firstColumn{Разрешение на вывоз и ввоз}{Определяет}{Классификатор целей ввоза и вывоза}{\ruleManyMondatoryOneOptional} & \generalizedColumn{Разрешение на вывоз и ввоз}{\razresheniyeNaVivozIVvozPK}{\razresheniyeNaVivozIVvozFK}{Классификатор целей ввоза и вывоза}{\krTseleyVvozaIVivozaPK}{\krTseleyVvozaIVivozaFK} \\ 
+            
+            \hline
+            \firstColumn{Разрешение на вывоз и ввоз}{Имеет}{Особые условия ввоза и вывоза}{\ruleOneOptionalManyMondatory} & \generalizedColumn{Разрешение на вывоз и ввоз}{\razresheniyeNaVivozIVvozPK}{\razresheniyeNaVivozIVvozFK}{Особые условия ввоза и вывоза}{\osbiyeUsloviaVvozaIVivozaPK}{\osbiyeUsloviaVvozaIVivozaFK} \\ 
+            
+            \hline
+            \firstColumn{Особые условия ввоза и вывоза}{Определяет}{Классификатор особых условий ввоза и вывоза}{\ruleManyMondatoryOneOptional} & \generalizedColumn{Особые условия ввоза и вывоза}{\osbiyeUsloviaVvozaIVivozaPK}{\krOsobihUsloviyVvozaIVivozaFK}{Классификатор особых условий ввоза и вывоза}{\krOsobihUsloviyVvozaIVivozaPK}{\krOsobihUsloviyVvozaIVivozaFK} \\ 
+            
+            %\hline
+            %\firstColumn{}{}{}{\rule} & \generalizedColumn{}{}{}{}{}{} \\
+            
+            \hline
+        \end{longtable}
+    \end{center}
     
     
     
@@ -336,9 +451,16 @@
 
 \subsection{Нормализация реляционных отношений}
 
+Отношения находятся в 1 НФ, т.к. каждый его элемент имеет атомарное строение.
+
+Отношения находятся во 2 НФ, т.к. они заданы в 1 НФ и каждый атрибут, не являющийся первичным атрибутом в каждом отношении, функционально полно зависит от первичного ключа этого отношения.
+
+Отношения находятся в 3 НФ, т.к. они заданы во 2 НФ и каждый атрибут  из каждого отношения, не являющийся первичным, нетранзитивно зависит от каждого возможного ключа. 
 
 
-\subsection{Спецификация реляционной модели данных}
+
+\subsection{Спецификация реляционной модели данных \textcolor{red}{TODO}}
+
 
 
 
