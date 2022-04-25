@@ -1,0 +1,252 @@
+\newcommand\entity{\vspace{5pt}\noindent}
+\newcommand\attributes[1]{
+\begin{minipage}{.9\textwidth}#1\end{minipage}}
+
+\newcommand\relationship{\vspace{.1cm}\noindent\hangindent=.1\textwidth}
+
+\subsubsection*{Entities}
+
+\entity Зоо коллекц : REGULAR ENTITY
+
+\attributes{Номер госрегистрации : [PK] ATTRIBUTE Type:INTEGER
+
+Дата регистрации : ATTRIBUTE Type:DATE
+
+Фамилия владельца : ATTRIBUTE Type:VARCHAR Length=
+
+Имя владельца : ATTRIBUTE Type:VARCHAR Length=
+
+Отчество владельца : [ALLOW NULL] ATTRIBUTE Type:VARCHAR Length=
+
+Код ФИАС владельца : ATTRIBUTE Type:CHAR Length=36
+
+Код ФИАС местонахождения коллекции : ATTRIBUTE Type:CHAR Length=36
+
+Код формы собственности : ATTRIBUTE Type:SMALLINT
+
+Год основания коллекции : ATTRIBUTE Type:DATE
+
+Номер перерегистрации : [ALLOW NULL] ATTRIBUTE Type:INTEGER
+
+Код заключения Экспертной группы по зоологическим коллекциям : ATTRIBUTE Type:INTEGER
+
+Фамилия выдавшего свидетельство о внесении коллекции в реестр : ATTRIBUTE Type:CHAR Length=30
+
+Имя выдавшего свидетельство о внесении коллекции в реестр : ATTRIBUTE Type:CHAR Length=20
+
+Отчество выдавшего свидетельство о внесении коллекции в реестр : [ALLOW NULL] ATTRIBUTE Type:CHAR Length=30
+
+Код ОКПРТР выдавшего свидетельство о внесении коллекции в реестр : ATTRIBUTE Type:INTEGER
+
+Номер свидетельства о внесении коллекции в реестр : ATTRIBUTE Type:INTEGER}
+
+\entity Кр ФИАС : REGULAR ENTITY
+Федеральная информационная адресная служба
+
+\attributes{Наименование ФИАС : ATTRIBUTE Type:VARCHAR Length=
+
+Код ФИАС : [PK] ATTRIBUTE Type:CHAR Length=36}
+
+\entity Кр форм собственности : REGULAR ENTITY
+
+\attributes{Код формы собственности : [PK] ATTRIBUTE Type:SMALLINT
+
+Наименование формы собственности : ATTRIBUTE Type:VARCHAR Length=}
+
+\entity Кр назн коллек : REGULAR ENTITY
+
+\attributes{Код назначения коллекции : [PK] ATTRIBUTE Type:SMALLINT
+
+Наименование назначения коллекции : ATTRIBUTE Type:VARCHAR Length=}
+
+\entity Объекты хранен : REGULAR ENTITY
+
+\attributes{Номер госрегистрации : [PK] ATTRIBUTE Type:INTEGER
+
+Код зоологической номенклатуры : ATTRIBUTE Type:INTEGER
+
+Колво объектов хранения : ATTRIBUTE Type:INTEGER
+
+Является уникальным объектом : ATTRIBUTE Type:BOOLEAN
+Занесен в Красные книги Российской Федерации, МСОП}
+
+\entity Зоо номенкл : REGULAR ENTITY
+
+\attributes{Код зоологической номенклатуры : [PK] ATTRIBUTE Type:INTEGER
+
+Наименование таксона : ATTRIBUTE Type:VARCHAR Length=}
+
+\entity Происхожден коллекц : REGULAR ENTITY
+
+\attributes{Номер госрегистрации : [PK] ATTRIBUTE Type:INTEGER
+
+Номер документа : [PK] ATTRIBUTE Type:NUMERIC Length=10 Width=1
+
+Код вида документа : ATTRIBUTE Type:NO DATATYPE
+
+Серия : [ALLOW NULL] ATTRIBUTE Type:INTEGER
+
+Номер : [ALLOW NULL] ATTRIBUTE Type:INTEGER}
+
+\entity Кр видов документов : REGULAR ENTITY
+
+\attributes{Код вида документов : [PK] ATTRIBUTE Type:INTEGER
+5 цифр
+
+Наименование вида документа : ATTRIBUTE Type:VARCHAR Length=}
+
+\entity Описание коллекции : REGULAR ENTITY
+
+\attributes{Номер госрегистрации : [PK] ATTRIBUTE Type:INTEGER
+
+Номер описания : [PK] ATTRIBUTE Type:NUMERIC Length=10 Width=1
+
+Код описания коллекции : ATTRIBUTE Type:INTEGER}
+
+\entity Кр коллекций : REGULAR ENTITY
+
+\attributes{Код описания коллекции : [PK] ATTRIBUTE Type:INTEGER
+
+Наименование описания коллекции : ATTRIBUTE Type:VARCHAR Length=}
+
+\entity Изменен в составе коллек : REGULAR ENTITY
+
+\attributes{Код госрегистрации : [PK] ATTRIBUTE Type:INTEGER
+
+Номер изменения : [PK] ATTRIBUTE Type:INTEGER
+
+Код причины изменения : ATTRIBUTE Type:INTEGER
+
+Описание измения : ATTRIBUTE Type:CHAR Length=}
+
+\entity Кр причин изменения в составе коллекции : REGULAR ENTITY
+
+\attributes{Код причины именения : [PK] ATTRIBUTE Type:INTEGER
+
+Наименование причины изменения : ATTRIBUTE Type:VARCHAR Length=}
+
+\entity Условия хранения коллекции : REGULAR ENTITY
+
+\attributes{Номер госрегистрации : [PK] ATTRIBUTE Type:INTEGER
+
+Номер условия : [PK] ATTRIBUTE Type:NUMERIC Length=100 Width=1
+
+Код условия хранения : ATTRIBUTE Type:INTEGER}
+
+\entity Кр условий хранения : REGULAR ENTITY
+
+\attributes{Код условия хранения : [PK] ATTRIBUTE Type:INTEGER
+
+Наименование условия хранения : ATTRIBUTE Type:VARCHAR Length=}
+
+\entity Кр заключений Экспертной группы по зоологическим коллекциям : REGULAR ENTITY
+
+\attributes{Код заключения : [PK] ATTRIBUTE Type:INTEGER
+
+Наименование заключения : ATTRIBUTE Type:VARCHAR Length=}
+
+\entity Кр ОКПРТР : REGULAR ENTITY
+
+\attributes{Код ОКПРТР : [PK] ATTRIBUTE Type:INTEGER
+
+Наименование ОКПРТР : ATTRIBUTE Type:VARCHAR Length=}
+
+\entity Разреш на вывоз и ввоз : REGULAR ENTITY
+
+\attributes{Действителен с : ATTRIBUTE Type:DATE
+
+Действителен по : ATTRIBUTE Type:DATE
+
+Номер разрешения : [PK] ATTRIBUTE Type:INTEGER
+
+Номер госрегистрации : [PK] ATTRIBUTE Type:INTEGER
+
+Код ОКСМ ввоза : ATTRIBUTE Type:INTEGER
+
+Код ОКСМ вывоза : ATTRIBUTE Type:INTEGER
+
+Фамилия отправителя : ATTRIBUTE Type:CHAR Length=30
+
+Имя отправителя : ATTRIBUTE Type:CHAR Length=20
+
+Отчество отправителя : [ALLOW NULL] ATTRIBUTE Type:CHAR Length=30
+
+Фамилия получателя : ATTRIBUTE Type:CHAR Length=30
+
+Имя получателя : ATTRIBUTE Type:CHAR Length=20
+
+Отчество получателя : [ALLOW NULL] ATTRIBUTE Type:CHAR Length=30
+
+Код цели ввоза или вывоза : ATTRIBUTE Type:INTEGER
+
+Дата выдачи разрешения : ATTRIBUTE Type:DATE
+
+Фамилия выдавшего разрешение : ATTRIBUTE Type:CHAR Length=30
+
+Имя выдавшего разрешение : ATTRIBUTE Type:CHAR Length=20
+
+Отчество выдавшего разрешение : [ALLOW NULL] ATTRIBUTE Type:CHAR Length=30
+
+Код ОКПРТР выдавшего разрешение : ATTRIBUTE Type:INTEGER}
+
+\entity Кр целей ввоза и вывоза : REGULAR ENTITY
+
+\attributes{Код цели ввоза или вывоза : [PK] ATTRIBUTE Type:INTEGER
+
+Наименование цели ввоза или вывоза : ATTRIBUTE Type:VARCHAR Length=}
+
+\entity Особые условия ввоза и вывоза : REGULAR ENTITY
+
+\attributes{Номер разрешения ввоза или вывоза : [PK] ATTRIBUTE Type:INTEGER
+
+Номер госрегистрации : [PK] ATTRIBUTE Type:INTEGER
+
+Номер особого условия ввоза или вывоза : [PK] ATTRIBUTE Type:NUMERIC Length=10 Width=1
+
+Код особого условия ввоза или вывоза : ATTRIBUTE Type:INTEGER}
+
+\entity Кр особых условий ввоза и вывоза : REGULAR ENTITY
+
+\attributes{Код особого условия : [PK] ATTRIBUTE Type:INTEGER
+
+Наименование особого условия ввоза или вывоза : ATTRIBUTE Type:VARCHAR Length=}
+
+\subsubsection*{Relationships}
+
+\relationship Определяет : REGULAR RELATIONSHIP Зоо коллекц MANY MANDATORY to Кр ФИАС ONE OPTIONAL
+
+\relationship Определяет : REGULAR RELATIONSHIP Зоо коллекц MANY MANDATORY to Кр назн коллек ONE OPTIONAL
+
+\relationship Определяет : REGULAR RELATIONSHIP Зоо коллекц MANY MANDATORY to Кр форм собственности ONE OPTIONAL
+
+\relationship Имеет : REGULAR RELATIONSHIP Зоо коллекц ONE MANDATORY to Объекты хранен MANY MANDATORY
+
+\relationship Определяет : REGULAR RELATIONSHIP Объекты хранен MANY MANDATORY to Зоо номенкл ONE OPTIONAL
+
+\relationship Имеет : REGULAR RELATIONSHIP Зоо коллекц ONE MANDATORY to Происхожден коллекц MANY MANDATORY
+
+\relationship Определяет : REGULAR RELATIONSHIP Происхожден коллекц MANY MANDATORY to Кр видов документов ONE OPTIONAL
+
+\relationship Имеет : REGULAR RELATIONSHIP Зоо коллекц ONE MANDATORY to Описание коллекции MANY MANDATORY
+
+\relationship Определяет : REGULAR RELATIONSHIP Описание коллекции MANY MANDATORY to Кр коллекций ONE OPTIONAL
+
+\relationship Имеет : REGULAR RELATIONSHIP Зоо коллекц ONE MANDATORY to Изменен в составе коллек MANY MANDATORY
+
+\relationship Определяет : REGULAR RELATIONSHIP Изменен в составе коллек MANY MANDATORY to Кр причин изменения в составе коллекции ONE OPTIONAL
+
+\relationship Имеет : REGULAR RELATIONSHIP Зоо коллекц ONE MANDATORY to Условия хранения коллекции MANY MANDATORY
+
+\relationship Определяет : REGULAR RELATIONSHIP Условия хранения коллекции MANY MANDATORY to Кр условий хранения ONE OPTIONAL
+
+\relationship Определяет : REGULAR RELATIONSHIP Зоо коллекц MANY MANDATORY to Кр заключений Экспертной группы по зоологическим коллекциям ONE OPTIONAL
+
+\relationship Определяет : REGULAR RELATIONSHIP Зоо коллекц MANY MANDATORY to Кр ОКПРТР ONE OPTIONAL
+
+\relationship Имеет : REGULAR RELATIONSHIP Зоо коллекц ONE OPTIONAL to Разреш на вывоз и ввоз MANY MANDATORY
+
+\relationship Определяет : REGULAR RELATIONSHIP Разреш на вывоз и ввоз MANY MANDATORY to Кр целей ввоза и вывоза ONE OPTIONAL
+
+\relationship Имеет : REGULAR RELATIONSHIP Разреш на вывоз и ввоз ONE OPTIONAL to Особые условия ввоза и вывоза MANY MANDATORY
+
+\relationship Определяет : REGULAR RELATIONSHIP Кр особых условий ввоза и вывоза ONE OPTIONAL to Особые условия ввоза и вывоза MANY MANDATORY
