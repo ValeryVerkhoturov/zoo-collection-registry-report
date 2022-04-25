@@ -89,17 +89,67 @@
     \label{fig:er_diagram}
 \end{figure}
 
-\subsection{Спецификация модели предметной области \textcolor{red}{TODO}}
+\subsection{Спецификация модели предметной области}
+\label{sec:specification}
+{
+\small
+\tt
+\setlength{\parindent}{.1\textwidth}
+\input{specification}
+}
 
 
+\subsection{Нормализация схем сущностей}
+\label{sec:normalization}
 
+Схемы сущностей нормализованы до 3 НФ.
+{
+\newcommand\proof[3]{\textbf{#1}: \\ #2 $\rightarrow$ #3.}
+\newcommand\pproof[3]{\textbf{#1} \\ #2 $\rightarrow\rightarrow$ #3.}
+\newcommand\ppproof[3]{\textbf{#1} \\ #2 $\rightarrow\rightarrow\rightarrow$ #3.}
+\newcommand\pppproof[3]{\textbf{#1} \\ #2 $\rightarrow\rightarrow\rightarrow\rightarrow$ #3.}
 
+\proof{Зоо коллекц}{Номер госрегистрации}{Дата регистрации, Фамилия владельца, Имя владельца, Отчество владельца, Код ФИАС владельца, Код ФИАС местонахождения коллекции, Код формы собственности, Год основания коллекции, Номер перерегистрации, Код заключения Экспертной группы по зоологическим коллекциям, Фамилия выдавшего свидетельство о внесении коллекции в реестр, Имя выдавшего свидетельство о внесении коллекции в реестр, Отчество выдавшего свидетельство о внесении коллекции в реестр, Код ОКПРТР выдавшего свидетельство о внесении коллекции в реестр, Номер свидетельства о внесении коллекции в реестр}
 
+\proof{Кр ФИАС}{Код ФИАС}{Наименование ФИАС}
 
+\proof{Кр форм собственности}{Код формы собственности}{Наименование формы собственности}
 
-\subsection{Нормализация схем сущностей \textcolor{red}{TODO}}
+\proof{Кр назн коллек}{Код назначения коллекции}{Наименование назначения коллекции}
 
+\proof{Объекты хранен}{Номер госрегистрации}{Код зоологической номенклатуры, Колво объектов хранения, Является уникальным объектом}
 
+\proof{Зоо номенкл}{Код зоологической номенклатуры}{Наименование таксона}
+
+\pproof{Происхожден коллекц}{Номер госрегистрации, Номер документа}{Код вида документа, Серия, Номер}
+
+\proof{Кр видов документов}{Код вида документов}{Наименование вида документа}
+
+\pproof{Описание коллекции}{Номер госрегистрации, Номер описания}{Код описания коллекции}
+
+\proof{Кр коллекций}{Код описания коллекции}{Наименование описания коллекции}
+
+\pproof{Изменен в составе коллек}{Код госрегистрации, Номер изменения}{Код причины изменения, Описание изменения}
+
+\proof{Кр причин изменения в составе коллекции}{Код причины именения}{Наименование причины изменения}
+
+\pproof{Условия хранения коллекции}{Номер госрегистрации, Номер условия}{Код условия хранения}
+
+\proof{Кр условий хранения}{Код условия хранения}{Наименование условия хранения}
+
+\proof{Кр заключений Экспертной группы по зоологическим коллекциям}{Код заключения}{Наименование заключения}
+
+\proof{Кр ОКПРТР}{Код ОКПРТР}{Наименование ОКПРТР}
+
+\pproof{Разреш на вывоз и ввоз}{Номер разрешения, Номер госрегистрации}{Действителен с, Действителен по, Код ОКСМ ввоза, Код ОКСМ вывоза, Фамилия отправителя, Имя отправителя, Отчество отправителя, Фамилия получателя, Имя получателя, Отчество получателя, Код цели ввоза или вывоза, Дата выдачи разрешения, Фамилия выдавшего разрешение, Имя выдавшего разрешение, Отчество выдавшего разрешение, Код ОКПРТР выдавшего разрешение}
+
+\proof{Кр целей ввоза и вывоза}{Код цели ввоза или вывоза}{Наименование цели ввоза или вывоза}
+
+\ppproof{Особые условия ввоза и вывоза}{Номер разрешения ввоза или вывоза, Номер госрегистрации, Номер особого условия ввоза или вывоза}{Код особого условия ввоза или вывоза, }
+
+\proof{Кр особых условий ввоза и вывоза}{Код особого условия}{Наименование особого условия ввоза или вывоза}
+
+}
 
 \section{Реляционная модель данных}
 
@@ -145,43 +195,43 @@
     
     %%% 1
     \newcommand\ruleOneMondatoryOneMondatoryNum{1}
-    \newcommand\ruleOneMondatoryOneMondatory{1 Об - 1 Об}
+    \newcommand\ruleOneMondatoryOneMondatory{1~Об -- 1~Об}
     
     %%% 2
     \newcommand\ruleOneMondatoryOneOptionalNum{2}
-    \newcommand\ruleOneMondatoryOneOptional{1 Об - 1 Н/О}
+    \newcommand\ruleOneMondatoryOneOptional{1~Об -- 1~Н/О}
     \newcommand\ruleOneOptionalOneMondatoryNum{2}
-    \newcommand\ruleOneOptionalOneMondatory{1 Н/О - 1 Об}
+    \newcommand\ruleOneOptionalOneMondatory{1~Н/О -- 1~Об}
     
     %%% 3
     \newcommand\ruleOneOptionalOneOptionalNum{3}
-    \newcommand\ruleOneOptionalOneOptional{1 Н/О - 1 Н/О}
+    \newcommand\ruleOneOptionalOneOptional{1~Н/О -- 1~Н/О}
     
     %%% 4
     \newcommand\ruleOneOptionalManyMondatoryNum{4}
-    \newcommand\ruleOneOptionalManyMondatory{1 Н/О - М Об}
+    \newcommand\ruleOneOptionalManyMondatory{1~Н/О -- М~Об}
     \newcommand\ruleManyMondatoryOneOptionalNum{4}
-    \newcommand\ruleManyMondatoryOneOptional{М Об - 1 Н/О}
+    \newcommand\ruleManyMondatoryOneOptional{М~Об -- 1~Н/О}
     
     \newcommand\ruleOneMondatoryManyMondatoryNum{4}
-    \newcommand\ruleOneMondatoryManyMondatory{1 Об - М Об}
+    \newcommand\ruleOneMondatoryManyMondatory{1~Об -- М~Об}
     \newcommand\ruleManyMondatoryOneMondatoryNum{4}
-    \newcommand\ruleManyMondatoryOneMondatory{М Об - 1 Об}
+    \newcommand\ruleManyMondatoryOneMondatory{М~Об -- 1~Об}
     
     %%% 5
     \newcommand\ruleOneMondatoryManyOptionalNum{5}
-    \newcommand\ruleOneMondatoryManyOptional{1 Об - М Н/О}
+    \newcommand\ruleOneMondatoryManyOptional{1~Об -- М~Н/О}
     \newcommand\ruleManyOptionalOneMondatoryNum{5}
-    \newcommand\ruleManyOptionalOneMondatory{М Н/О - 1 Об}
+    \newcommand\ruleManyOptionalOneMondatory{М~Н/О -- 1~Об}
     
     \newcommand\ruleOneOptionalManyOptionalNum{5}
-    \newcommand\ruleOneOptionalManyOptional{1 Н/О - М Н/О}
+    \newcommand\ruleOneOptionalManyOptional{1~Н/О -- М~Н/О}
     \newcommand\ruleManyOptionalOneOptionalNum{5}
-    \newcommand\ruleManyOptionalOneOptional{М Н/О - 1 Н/О}
+    \newcommand\ruleManyOptionalOneOptional{М~Н/О -- 1~Н/О}
     
     %%% 6
     \newcommand\ruleManyOptionalManyOptionalNum{6}
-    \newcommand\ruleManyOptionalManyOptional{М Н/О - М Н/О}
+    \newcommand\ruleManyOptionalManyOptional{М~Н/О -- М~Н/О}
     
     %% Entities
     
@@ -444,22 +494,17 @@
         \end{longtable}
     \end{center}
     
-    
-    
-    
 }
 
 \subsection{Нормализация реляционных отношений}
 
-Отношения находятся в 1 НФ, т.к. каждый его элемент имеет атомарное строение.
-
-Отношения находятся во 2 НФ, т.к. они заданы в 1 НФ и каждый атрибут, не являющийся первичным атрибутом в каждом отношении, функционально полно зависит от первичного ключа этого отношения.
-
-Отношения находятся в 3 НФ, т.к. они заданы во 2 НФ и каждый атрибут  из каждого отношения, не являющийся первичным, нетранзитивно зависит от каждого возможного ключа. 
+Нормализация реляционных отношений соответствует нормализации схем сущностей (разд.~\ref{sec:normalization}).
 
 
 
-\subsection{Спецификация реляционной модели данных \textcolor{red}{TODO}}
+\subsection{Спецификация реляционной модели данных}
+
+Спецификация реляционной модели см в разд.~\ref{sec:specification}.
 
 
 
